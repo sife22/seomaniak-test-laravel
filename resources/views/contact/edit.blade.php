@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <div class="p-5">
-    <div id="message" class="text-success m-5 h3">SS</div>
+    <div id="message" class="text-success m-5 h3"></div>
     <form class="m-5" id="contactForm">
         <input type="hidden" name="contactId" id="contactId" value="{{$contact->id}}">
         <h2 class="mb-5">Modifier le contact {{ $contact->nom }}</h2>

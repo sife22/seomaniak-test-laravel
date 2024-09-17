@@ -54,6 +54,6 @@ public function update(Request $request, $id){
 public function destroy($id){
     $contact = Contact::findOrFail($id);
     $contact->delete();
-    return response()->json(['message'=>'Vous avez supprimer le contact avec succès'], 201);
+    return response()->json(['message'=>'Vous avez supprimé le contact avec succès'], 201);
 }   
 }
