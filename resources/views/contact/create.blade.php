@@ -1,7 +1,11 @@
 @extends('layout')
 @section('content')
 <div class="p-5">
+    
+    <div id="message" class="text-success m-5 h3"></div>
     <form class="m-5" id="contactForm">
+        <h2 class="mb-5">Ajouter un contact</h2>
+
         <div class="form-group mb-3">
             <label for="">Nom</label>
             <input type="text" class="form-control" id="nom" aria-describedby="nameHelp" placeholder="Entrer le nom :">
@@ -15,12 +19,15 @@
             <input type="email" class="form-control" id="email" placeholder="Entrer l'email : ">
         </div>
         <button type="submit" class="btn btn-primary mb-3">Ajouter</button>
-        <div id="message" class="mt-3 text-success"></div>
 
     </form>
 </div>
 <script>
+    
+    // On gère la soumission du formulaire
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
+
+    // Pour éviter l'actualisation de la page
     e.preventDefault(); 
 
     // On récupère les données saisies

@@ -3,11 +3,16 @@
 <div id="message" class="text-success m-5 h3"></div>
 <ul class="list-group m-5">
     @foreach ($contacts as $contact)
-    <li class="list-group-item">{{ $contact->nom }} <button class="btn btn-danger  delete-contact" data-id="{{ $contact->id }}">Supprimer</button></li>
+    <li class="list-group-item">{{ $contact->nom }} 
+        <a href="https://seomaniak-test-laravel.ddev.site/modifier-contact/{{$contact->id}}" class="btn btn-warning btn-sm">Modifier</a>
+        <button class="btn btn-danger btn-sm  delete-contact" data-id="{{ $contact->id }}">Supprimer</button> 
+    </li>
     @endforeach
 </ul>
 <script>
     document.querySelectorAll('.delete-contact').forEach(button => {
+
+        // On gère clic sur le bouton 'Supprimer'
         button.addEventListener('click', async function() {
             const contactId = this.getAttribute('data-id');
             const message = document.getElementById('message');
@@ -30,7 +35,7 @@
                 // On retourne l'utilisateur vers la même page après la suppression
                 setTimeout(() => {
                     window.location.href = '/contacts';
-                }, 3000); 
+                }, 2000); 
             } catch (error) {
                 console.error('Erreur:', error);
             }

@@ -20,7 +20,8 @@ public function create(){
 
 // Pour afficher le formulaire de modification
 public function edit($id){
-
+    $contact = Contact::findOrFail($id);
+    return view('contact.edit', compact('contact'));
 }
 
 // Pour afficher chaque contact tout seul
@@ -41,7 +42,12 @@ public function store(Request $request){
 
 // Pour modifier un contact
 public function update(Request $request, $id){
-    
+    $contact = Contact::findOrFail($id);
+    $contact->nom = $request['nom'];
+    $contact->gsm = $request['gsm'];
+    $contact->email = $request['email'];
+    $contact->save();
+    return response()->json(['message'=>'Vous avez modifié le contact avec succès','contact'=>$contact], 201);
 }
 
 // Pour supprimer un contact
