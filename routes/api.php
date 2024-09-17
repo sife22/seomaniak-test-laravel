@@ -20,7 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/contacts', [ContactController::class, 'index']);
 Route::post('/ajouter-contact', [ContactController::class, 'store']);
 Route::get('/contact/{id}', [ContactController::class, 'show']);
 Route::put('/modifier-contact/{id}', [ContactController::class, 'update']);
