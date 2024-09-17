@@ -18,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/ajouter-contact', [ContactController::class, 'create']);
+Route::get('/modifier-contact/{id}', [ContactController::class, 'edit']);
 
