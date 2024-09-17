@@ -15,6 +15,8 @@
             <input type="email" class="form-control" id="email" placeholder="Entrer l'email : ">
         </div>
         <button type="submit" class="btn btn-primary mb-3">Ajouter</button>
+        <div id="message" class="mt-3 text-success"></div>
+
     </form>
 </div>
 <script>
@@ -26,6 +28,10 @@
     const gsm = document.getElementById('gsm').value;
     const email = document.getElementById('email').value;
 
+    // On récupère le div du message de succès
+    const message = document.getElementById('message');
+
+
     try {
         // Consommer l'API ajouter-contact pour créer un nouveau contact
         const response = await fetch('https://seomaniak-test-laravel.ddev.site/api/ajouter-contact', {
@@ -36,20 +42,20 @@
             body: JSON.stringify({ nom, gsm, email }),
         });
 
-        
-        // if (!response.ok) {
-        //     throw new Error('Il y a un erreur');
-        // }
-
         // On récupère la réponse envoyée par le back-end
         const jsonResponse = await response.json();
         
         // On affiche le résultat sur la console avant de renvoyer l'utilisateur vers la page contacts
         console.log('Réponse de l\'API:', jsonResponse);
+
+        // Le message sera affiché au cas où la création a été effectuée avec succès
+        message.textContent = jsonResponse.message
+
+        // On retourne l'utilisateur vers la page contacts après la création du nouveau contact
         setTimeout(() => {
-                window.location.href = '/contact';
+                window.location.href = '/contacts';
         }, 3000); 
-        
+
     } catch (error) {
         console.error('Erreur:', error);
     }
