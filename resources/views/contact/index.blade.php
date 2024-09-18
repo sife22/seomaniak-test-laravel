@@ -3,9 +3,12 @@
 <div id="message" class="text-success m-5 h3"></div>
 <ul class="list-group m-5">
     @foreach ($contacts as $contact)
-    <li class="list-group-item">{{ $contact->nom }} 
-        <a href="https://seomaniak-test-laravel.ddev.site/modifier-contact/{{$contact->id}}" class="btn btn-warning btn-sm">Modifier</a>
-        <button class="btn btn-danger btn-sm  delete-contact" data-id="{{ $contact->id }}">Supprimer</button> 
+    <li class="list-group-item d-flex justify-content-between">
+        <a href="https://seomaniak-test-laravel.ddev.site/contact/{{$contact->id}}">{{ $contact->nom }}</a> 
+        <div>
+            <a href="https://seomaniak-test-laravel.ddev.site/modifier-contact/{{$contact->id}}" class="btn btn-warning btn-sm">Modifier</a>
+            <button class="btn btn-danger btn-sm  delete-contact" data-id="{{ $contact->id }}">Supprimer</button> 
+        </div>
     </li>
     @endforeach
 </ul>

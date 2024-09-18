@@ -27,7 +27,7 @@ public function edit($id){
 // Pour afficher chaque contact tout seul
 public function show($id){
     $contact = Contact::findOrFail($id);
-    return response()->json(['contact'=>$contact], 200);
+    return view('contact.show', compact('contact'));
 }
 
 // Pour enregistrer un nouveau contact
